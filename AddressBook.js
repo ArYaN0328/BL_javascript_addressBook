@@ -184,3 +184,19 @@ function viewByCityOrState(choice , name){
         console.log("Provide Right City or State Name");
     }
 }
+
+// UC10
+// count contact
+function countContactInCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}

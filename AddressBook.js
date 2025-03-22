@@ -1,4 +1,4 @@
-//UC1
+// UC1
 class Contact{
     firstName;
     lastName;
@@ -23,7 +23,7 @@ class Contact{
 }
 
 var addressBook;
-//UC2
+// UC2
 function contactDetails(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
     
     //checking duplicate
@@ -65,8 +65,8 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }  
 }
 
-//UC3
-//method for adding contact
+// UC3
+// method for adding contact
 function addContact(firstName,lastName,address,state,city,zipCode,email,phoneNumber) {
     if (addressBook == null) {
         addressBook = new Array();
@@ -78,8 +78,8 @@ function addContact(firstName,lastName,address,state,city,zipCode,email,phoneNum
     console.log(addressBook);
 }
 
-//UC4
-//method to find and edit Contacts
+// UC4
+// method to find and edit Contacts
 function editContact(findName,editedVariable,variableNewValue){
     if(addressBook.length == null){
         console.log("Add Contact In Address Book");
@@ -117,8 +117,8 @@ function editContact(findName,editedVariable,variableNewValue){
     }
 }
 
-//UC5
-//method to delete
+// UC5
+// method to delete
 function deleteContact(first_Name){
     if(addressBook.length == null){
         console.log("Add Contact In Address Book");
@@ -132,8 +132,8 @@ function deleteContact(first_Name){
     }
 }
 
-//UC6
-//method to Count Total Number Of Contact 
+// UC6
+// method to Count Total Number Of Contact 
 function countContact(){
     addressBook.reduce(() => {
         count++;
@@ -149,4 +149,22 @@ function isDuplicate(firstName) {
     // Reduce to count duplicates
     let duplicateCount = duplicates.reduce((count) => count + 1, 0);
     return duplicateCount > 0;
+}
+
+// UC8
+// method to Search Contact 
+function searchByCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
 }

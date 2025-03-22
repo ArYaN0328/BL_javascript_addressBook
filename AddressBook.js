@@ -1,4 +1,3 @@
-
 //UC1
 class Contact{
     firstName;
@@ -111,5 +110,20 @@ function editContact(findName,editedVariable,variableNewValue){
                 }
             }
         })
+    }
+}
+
+//UC5
+//method to delete
+function deleteContact(first_Name){
+    if(addressBook.length == null){
+        console.log("Add Contact In Address Book");
+    }else{
+        for(let i = 0; i <addressBook.length ; i++){
+            if(addressBook[i].firstName == first_Name){
+                addressBook.splice(i,1);
+                console.log("Contact Deleted Successfully");
+            }
+        }
     }
 }

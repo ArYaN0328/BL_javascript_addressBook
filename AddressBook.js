@@ -1,3 +1,4 @@
+
 // UC1
 class Contact{
     firstName;
@@ -207,6 +208,41 @@ function sortContactbyName(){
     console.log(addressBook.sort((newContact1,newContact2) => {
         one = newContact1.firstName;
         two = newContact2.firstName;
+        if(one < two){
+            return -1;
+        }else if(one == two){
+            return 0;
+        }else{
+            return 1;
+        }
+    }));
+}
+
+// UC12
+// sorting 
+function sortContact(choice){
+    console.log(addressBook.sort((newContact1,newContact2) => {
+        switch(choice){
+            case "firstName":
+                one = newContact1.firstName;
+                two = newContact2.firstName;
+                break;
+            case "city":
+                one = newContact1.city;
+                two = newContact2.city;
+                break;
+            case  "state":
+                one = newContact1.state;
+                two = newContact2.state;
+                break;
+            case "zipCode":
+                one = newContact1.zipCode;
+                two = newContact2.zipCode;
+                break;
+            default:
+                console.log("Provide Valid Input for firstName or city or state or zipCode")
+        }
+   
         if(one < two){
             return -1;
         }else if(one == two){

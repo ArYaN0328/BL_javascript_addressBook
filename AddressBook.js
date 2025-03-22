@@ -22,16 +22,16 @@ class Contact{
     }
 }
 
+var addressBook;
 //UC2
 function contactDetails(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
     
     //checking duplicate
-    addressBook.filter(contact => contact.firstName == firstName)
-    .reduce(() => count++ , count = 0);
-    if(count > 0){
-        console.log("Contact With Name " + firstName + " Already Present")
-    }else{
-        const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
+    if (isDuplicate(firstName)) {
+        console.log("Contact With Name " + firstName + " Already Present");
+        return;
+    }
+    const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
     let firstName_Check = firstNamePattern.test(firstName);
 
     const lastNamePattern = /^[A-Z][a-zA-Z]{3,}/;
@@ -58,21 +58,25 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         if(firstName_Check == true && lastName_Check == true && address_Check == true && state_Check == true && city_Check == true
                         && zipCode_Check == true && email_Check == true && phoneNumber_Check == true){
            
-            let newContact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
-            console.log("Contact Added Successfully");
-            
-            addressBook.push(newContact);
+            addContact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
 
         }else{
             throw 'Contact Details Are Invalid';
-        }
-    }   
+        }  
 }
 
 //UC3
-var addressBook = new Array();
-addressBook.push(new Contact('Naman', 'Agarwal', 'Ghar', 'UP', 'Agra', 282010, 'naman@gmail.com', 7017999999));
-console.log(addressBook);
+//method for adding contact
+function addContact(firstName,lastName,address,state,city,zipCode,email,phoneNumber) {
+    if (addressBook == null) {
+        addressBook = new Array();
+    }
+    let newContact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
+    console.log("Contact Added Successfully");
+    
+    addressBook.push(newContact);
+    console.log(addressBook);
+}
 
 //UC4
 //method to find and edit Contacts
@@ -135,4 +139,14 @@ function countContact(){
         count++;
     },count = 0);
     console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
+}
+
+// UC7
+//method for Duplicate Check Function
+function isDuplicate(firstName) {
+    // Filter matching names
+    let duplicates = addressBook.filter(contact => contact.firstName === firstName);
+    // Reduce to count duplicates
+    let duplicateCount = duplicates.reduce((count) => count + 1, 0);
+    return duplicateCount > 0;
 }

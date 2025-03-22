@@ -127,3 +127,12 @@ function deleteContact(first_Name){
         }
     }
 }
+
+//UC6
+//method to Count Total Number Of Contact 
+function countContact(){
+    addressBook.reduce(() => {
+        count++;
+    },count = 0);
+    console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
+}

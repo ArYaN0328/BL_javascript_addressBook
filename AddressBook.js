@@ -69,3 +69,8 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }
     }   
 }
+
+//UC3
+var addressBook = new Array();
+addressBook.push(new Contact('Naman', 'Agarwal', 'Ghar', 'UP', 'Agra', 282010, 'naman@gmail.com', 7017999999));
+console.log(addressBook);

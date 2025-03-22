@@ -200,3 +200,19 @@ function countContactInCity_State(choice , name){
         console.log("Provide Right City or State Name");
     }
 }
+
+// UC11
+// sorting by name
+function sortContactbyName(){
+    console.log(addressBook.sort((newContact1,newContact2) => {
+        one = newContact1.firstName;
+        two = newContact2.firstName;
+        if(one < two){
+            return -1;
+        }else if(one == two){
+            return 0;
+        }else{
+            return 1;
+        }
+    }));
+}
